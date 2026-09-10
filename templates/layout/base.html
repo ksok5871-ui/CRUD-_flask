@@ -137,17 +137,6 @@
       padding: 0.875rem 1rem;
       border-bottom-color: #f1f5f9;
     }
-
-    .search-input-group {
-      background-color: #f1f5f9;
-      border-radius: 8px;
-      border: 1px solid transparent;
-    }
-
-    .search-input-group:focus-within {
-      border-color: #6366f1;
-      background-color: #ffffff;
-    }
   </style>
 </head>
 <body>
@@ -215,14 +204,8 @@
   <!-- Main Content Area -->
   <div class="main-wrapper">
     <!-- Top Navbar -->
-    <header class="top-navbar d-flex align-items-center justify-content-between sticky-top">
-      <!-- Search Input -->
-      <div class="search-input-group d-flex align-items-center px-3 py-1" style="width: 320px">
-        <i class="bi bi-search text-muted me-2"></i>
-        <input type="text" class="form-control border-0 bg-transparent shadow-none p-0 fs-7" placeholder="Search analytics, orders, users..." />
-      </div>
-
-      <!-- Quick Actions & Profile -->
+    <header class="top-navbar d-flex align-items-center justify-content-end sticky-top">
+      <!-- Quick Actions (Icons moved to right) -->
       <div class="d-flex align-items-center gap-3">
         <button class="btn btn-light rounded-circle p-2 d-flex align-items-center justify-content-center position-relative" style="width: 38px; height: 38px">
           <i class="bi bi-bell text-secondary"></i>
@@ -231,299 +214,52 @@
         <button class="btn btn-light rounded-circle p-2 d-flex align-items-center justify-content-center" style="width: 38px; height: 38px">
           <i class="bi bi-moon-stars text-secondary"></i>
         </button>
-        <div class="vr mx-1 opacity-25"></div>
-        <button class="btn btn-primary d-flex align-items-center gap-2 fw-semibold btn-sm px-3" style="background-color: #6366f1; border: none; border-radius: 8px">
-          <i class="bi bi-plus-lg"></i> Create Campaign
-        </button>
       </div>
     </header>
 
     <!-- Main Body Container -->
     <main class="p-4 flex-grow-1">
       {% block content %}
-
-      <!-- Header Section -->
-      <div class="d-flex flex-column flex-md-row justify-content-between align-items-md-center gap-3 mb-4">
-        <div>
-          <h1 class="h4 fw-bold mb-1">Performance Overview</h1>
-          <p class="text-muted small mb-0">Here is what's happening with your business today, Sep 10, 2026.</p>
-        </div>
-        <div class="d-flex gap-2">
-          <div class="input-group input-group-sm">
-            <span class="input-group-text bg-white border-end-0 text-muted"><i class="bi bi-calendar-event"></i></span>
-            <input type="text" class="form-control border-start-0 bg-white" value="Sep 1 - Sep 10, 2026" readonly />
-          </div>
-          <button class="btn btn-sm btn-outline-secondary d-flex align-items-center gap-1">
-            <i class="bi bi-filter"></i> Filter
-          </button>
-        </div>
+      <!-- Category List Content (Replaced based on provided image layout) -->
+      <div class="d-flex justify-content-between align-items-center mb-4">
+        <h1 class="h3 fw-bold mb-0">Category List</h1>
+        <button class="btn btn-primary d-flex align-items-center gap-2 fw-semibold px-4" style="background-color: #0d6efd; border: none; border-radius: 8px">
+            +Add New category
+        </button>
       </div>
 
-      <!-- Metric KPI Cards -->
-      <div class="row g-3 mb-4">
-        <!-- KPI 1 -->
-        <div class="col-12 col-sm-6 col-xl-3">
-          <div class="card-custom p-3">
-            <div class="d-flex align-items-center justify-content-between mb-2">
-              <span class="text-muted fw-semibold small">Total Revenue</span>
-              <div class="icon-badge bg-primary-subtle text-primary">
-                <i class="bi bi-wallet2"></i>
-              </div>
-            </div>
-            <h3 class="fw-extrabold mb-1">$84,320.00</h3>
-            <div class="d-flex align-items-center gap-2 fs-7">
-              <span class="badge bg-success-subtle text-success fw-bold"><i class="bi bi-arrow-up-short"></i>+14.2%</span>
-              <span class="text-muted">vs last month</span>
-            </div>
-          </div>
-        </div>
-
-        <!-- KPI 2 -->
-        <div class="col-12 col-sm-6 col-xl-3">
-          <div class="card-custom p-3">
-            <div class="d-flex align-items-center justify-content-between mb-2">
-              <span class="text-muted fw-semibold small">Active Subscriptions</span>
-              <div class="icon-badge bg-success-subtle text-success">
-                <i class="bi bi-arrow-repeat"></i>
-              </div>
-            </div>
-            <h3 class="fw-extrabold mb-1">3,482</h3>
-            <div class="d-flex align-items-center gap-2 fs-7">
-              <span class="badge bg-success-subtle text-success fw-bold"><i class="bi bi-arrow-up-short"></i>+8.1%</span>
-              <span class="text-muted">vs last month</span>
-            </div>
-          </div>
-        </div>
-
-        <!-- KPI 3 -->
-        <div class="col-12 col-sm-6 col-xl-3">
-          <div class="card-custom p-3">
-            <div class="d-flex align-items-center justify-content-between mb-2">
-              <span class="text-muted fw-semibold small">Avg Order Value</span>
-              <div class="icon-badge bg-warning-subtle text-warning">
-                <i class="bi bi-bag-check"></i>
-              </div>
-            </div>
-            <h3 class="fw-extrabold mb-1">$126.50</h3>
-            <div class="d-flex align-items-center gap-2 fs-7">
-              <span class="badge bg-danger-subtle text-danger fw-bold"><i class="bi bi-arrow-down-short"></i>-2.4%</span>
-              <span class="text-muted">vs last month</span>
-            </div>
-          </div>
-        </div>
-
-        <!-- KPI 4 -->
-        <div class="col-12 col-sm-6 col-xl-3">
-          <div class="card-custom p-3">
-            <div class="d-flex align-items-center justify-content-between mb-2">
-              <span class="text-muted fw-semibold small">Conversion Rate</span>
-              <div class="icon-badge bg-info-subtle text-info">
-                <i class="bi bi-pie-chart"></i>
-              </div>
-            </div>
-            <h3 class="fw-extrabold mb-1">4.35%</h3>
-            <div class="d-flex align-items-center gap-2 fs-7">
-              <span class="badge bg-success-subtle text-success fw-bold"><i class="bi bi-arrow-up-short"></i>+1.1%</span>
-              <span class="text-muted">vs last month</span>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <!-- Charts Grid -->
-      <div class="row g-3 mb-4">
-        <!-- Main Revenue Chart -->
-        <div class="col-12 col-lg-8">
-          <div class="card-custom p-3 h-100">
-            <div class="d-flex align-items-center justify-content-between mb-3">
-              <div>
-                <h6 class="fw-bold mb-0">Revenue & Expenses</h6>
-                <small class="text-muted">Monthly comparison for 2026</small>
-              </div>
-              <div class="btn-group btn-group-sm">
-                <button class="btn btn-outline-secondary active">Monthly</button>
-                <button class="btn btn-outline-secondary">Weekly</button>
-              </div>
-            </div>
-            <div id="mainChart" style="min-height: 310px"></div>
-          </div>
-        </div>
-
-        <!-- Donut Breakdown Chart -->
-        <div class="col-12 col-lg-4">
-          <div class="card-custom p-3 h-100 d-flex flex-column justify-content-between">
-            <div>
-              <h6 class="fw-bold mb-0">Traffic Channels</h6>
-              <small class="text-muted">Top customer acquisition sources</small>
-            </div>
-            <div id="donutChart" class="my-auto" style="min-height: 250px"></div>
-            <div class="pt-2 border-top d-flex justify-content-between text-center fs-7">
-              <div>
-                <div class="text-muted">Direct</div>
-                <strong class="text-dark">44%</strong>
-              </div>
-              <div>
-                <div class="text-muted">Social</div>
-                <strong class="text-dark">33%</strong>
-              </div>
-              <div>
-                <div class="text-muted">Search</div>
-                <strong class="text-dark">23%</strong>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <!-- Recent Transactions Table -->
-      <div class="card-custom p-3">
-        <div class="d-flex align-items-center justify-content-between mb-3">
-          <div>
-            <h6 class="fw-bold mb-0">Recent Orders</h6>
-            <small class="text-muted">Latest purchases processed through store</small>
-          </div>
-          <button class="btn btn-sm btn-light border text-dark fw-semibold">View All Orders</button>
-        </div>
-
+      <div class="card-custom">
         <div class="table-responsive">
           <table class="table align-middle mb-0">
             <thead class="bg-light">
               <tr class="text-muted fs-7 text-uppercase">
-                <th scope="col">Transaction ID</th>
-                <th scope="col">Customer</th>
-                <th scope="col">Date</th>
-                <th scope="col">Amount</th>
-                <th scope="col">Status</th>
-                <th scope="col" class="text-end">Actions</th>
+                <th scope="col" style="width: 10%">No.</th>
+                <th scope="col" style="width: 40%">Category Name</th>
+                <th scope="col" style="width: 25%">Status</th>
+                <th scope="col" style="width: 25%">Action</th>
               </tr>
             </thead>
             <tbody class="fs-7">
               <tr>
-                <td class="fw-bold text-dark">#TXN-9021</td>
+                <td class="text-dark">1</td>
+                <td class="text-dark">Electronics</td>
+                <td class="text-dark">Active</td>
                 <td>
-                  <div class="d-flex align-items-center gap-2">
-                    <img src="https://i.pravatar.cc/40?img=33" width="32" height="32" class="rounded-circle" alt="user" />
-                    <div>
-                      <div class="fw-bold text-dark">Sophia Martinez</div>
-                      <small class="text-muted">sophia@example.com</small>
-                    </div>
+                  <div class="d-flex gap-2">
+                    <button class="btn btn-sm text-dark px-3" style="background-color: #ffc107; border-radius: 5px;">Edit</button>
+                    <button class="btn btn-sm btn-danger px-3" style="border-radius: 5px;">Delete</button>
                   </div>
-                </td>
-                <td class="text-muted">Sep 10, 2026</td>
-                <td class="fw-bold text-dark">$320.00</td>
-                <td>
-                  <span class="badge badge-soft-success rounded-pill px-2 py-1 fs-8">
-                    <span class="status-dot bg-success"></span> Completed
-                  </span>
-                </td>
-                <td class="text-end">
-                  <button class="btn btn-sm btn-light border p-1"><i class="bi bi-three-dots-vertical"></i></button>
-                </td>
-              </tr>
-              <tr>
-                <td class="fw-bold text-dark">#TXN-9020</td>
-                <td>
-                  <div class="d-flex align-items-center gap-2">
-                    <img src="https://i.pravatar.cc/40?img=11" width="32" height="32" class="rounded-circle" alt="user" />
-                    <div>
-                      <div class="fw-bold text-dark">David Miller</div>
-                      <small class="text-muted">david.m@example.com</small>
-                    </div>
-                  </div>
-                </td>
-                <td class="text-muted">Sep 09, 2026</td>
-                <td class="fw-bold text-dark">$145.20</td>
-                <td>
-                  <span class="badge badge-soft-warning rounded-pill px-2 py-1 fs-8">
-                    <span class="status-dot bg-warning"></span> Pending
-                  </span>
-                </td>
-                <td class="text-end">
-                  <button class="btn btn-sm btn-light border p-1"><i class="bi bi-three-dots-vertical"></i></button>
-                </td>
-              </tr>
-              <tr>
-                <td class="fw-bold text-dark">#TXN-9019</td>
-                <td>
-                  <div class="d-flex align-items-center gap-2">
-                    <img src="https://i.pravatar.cc/40?img=47" width="32" height="32" class="rounded-circle" alt="user" />
-                    <div>
-                      <div class="fw-bold text-dark">Emma Watson</div>
-                      <small class="text-muted">emma@example.com</small>
-                    </div>
-                  </div>
-                </td>
-                <td class="text-muted">Sep 09, 2026</td>
-                <td class="fw-bold text-dark">$89.00</td>
-                <td>
-                  <span class="badge badge-soft-danger rounded-pill px-2 py-1 fs-8">
-                    <span class="status-dot bg-danger"></span> Cancelled
-                  </span>
-                </td>
-                <td class="text-end">
-                  <button class="btn btn-sm btn-light border p-1"><i class="bi bi-three-dots-vertical"></i></button>
                 </td>
               </tr>
             </tbody>
           </table>
         </div>
       </div>
-
       {% endblock %}
     </main>
   </div>
 
   <!-- Bootstrap Bundle JS -->
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
-
-  <!-- ApexCharts Setup Scripts -->
-  <script>
-    // Area Revenue Chart
-    var areaOptions = {
-      series: [
-        { name: "Revenue", data: [31, 40, 28, 51, 42, 109, 100, 120, 145] },
-        { name: "Expenses", data: [11, 32, 45, 32, 34, 52, 41, 60, 55] },
-      ],
-      chart: {
-        height: 300,
-        type: "area",
-        fontFamily: "Plus Jakarta Sans, sans-serif",
-        toolbar: { show: false },
-      },
-      dataLabels: { enabled: false },
-      stroke: { curve: "smooth", width: 2 },
-      colors: ["#6366f1", "#cbd5e1"],
-      fill: {
-        type: "gradient",
-        gradient: {
-          shadeIntensity: 1,
-          opacityFrom: 0.4,
-          opacityTo: 0.05,
-          stops: [0, 90, 100],
-        },
-      },
-      xaxis: {
-        categories: ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep"],
-      },
-    };
-    var chart1 = new ApexCharts(document.querySelector("#mainChart"), areaOptions);
-    chart1.render();
-
-    // Donut Traffic Chart
-    var donutOptions = {
-      series: [44, 33, 23],
-      chart: {
-        type: "donut",
-        height: 240,
-        fontFamily: "Plus Jakarta Sans, sans-serif",
-      },
-      labels: ["Direct", "Social Media", "Search Engines"],
-      colors: ["#6366f1", "#38bdf8", "#a855f7"],
-      legend: { show: false },
-      dataLabels: { enabled: false },
-    };
-    var chart2 = new ApexCharts(document.querySelector("#donutChart"), donutOptions);
-    chart2.render();
-  </script>
 </body>
 </html>
