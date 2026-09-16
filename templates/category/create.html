@@ -1,0 +1,31 @@
+{% extends 'layout/base.html' %}
+
+
+{% block title %}Create Category{% endblock %}
+
+{% block content %}
+  <div class="container mt-4">
+    <h1>Create Category</h1>
+    <form action="{{ url_for('create_category') }}" method="POST">
+        <!-- Category Name -->
+        <div class="mb-3">
+            <label for="categoryName" class="form-label">Category Name</label>
+            <input type="text" class="form-control" id="categoryName" name="name" placeholder="E.g: Electronics,clothes,shoes..." required>
+        </div>
+
+        <!-- Status -->
+        <div class="mb-3">
+            <label for="categoryStatus" class="form-label">Status</label>
+            <select class="form-select" id="categoryStatus" name="status">
+                <option value="">---Select Status---</option>
+                <option value="Active">Active</option>
+                <option value="Inactive">Inactive</option>
+            </select>
+        </div>
+        <!-- Submit Button -->
+        <button type="submit" class="btn btn-primary px-4">save</button>
+        <a href="" class="btn btn-secondary">Cancel</a>
+    </form>
+</div>
+
+{% endblock %}

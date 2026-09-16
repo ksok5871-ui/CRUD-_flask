@@ -1,16 +1,17 @@
 import pymysql
+
 def connectdatabase():
     return pymysql.connect(
         host= "localhost",
         user= "root",
         password='',
         port=3306,
-        database='crud_products'
+        database='inventory_flask_db'
     )
 
-connect=connectdatabase()
+connection=connectdatabase()
 
-if connect:
+if connection:
     print("Connection to database successfully!")
 
 
