@@ -6,7 +6,7 @@
 {% block content %}
     <div class="d-flex justify-content-between align-items-center">
         <h1 class="fw-bold">Category List</h1>
-        <a href="{{ url_for('create_category') }}" class="btn btn-primary">+Add New category</a>
+        <a href="{{url_for('create_category')}}" class="btn btn-primary">+Add New category</a>
     </div>
 
     <table class="table table-striped table-hover text-center align-middle">
@@ -16,14 +16,16 @@
             <th>Status</th>
             <th>Action</th>
         </tr>
+       {% for cat in categories %}
         <tr>
-            <td>1</td>
-            <td>Electronics</td>
-            <td>Active</td>
+            <td>{{ loop.index }}</td>
+            <td>{{ cat.name }}</td>
+            <td>{{ cat.status }}</td>
             <td>
-                <a href="" class="btn btn-warning">Edit</a>
+                <a href="{{url_for('update_category', id=cat.id)}}" class="btn btn-warning">Edit</a>
                 <a href="" class="btn btn-danger">Delete</a>
             </td>
         </tr>
+       {% endfor %}
     </table>
 {% endblock %}

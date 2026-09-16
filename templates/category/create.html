@@ -1,31 +1,33 @@
 {% extends 'layout/base.html' %}
 
-
 {% block title %}Create Category{% endblock %}
 
 {% block content %}
-  <div class="container mt-4">
-    <h1>Create Category</h1>
-    <form action="{{ url_for('create_category') }}" method="POST">
-        <!-- Category Name -->
-        <div class="mb-3">
-            <label for="categoryName" class="form-label">Category Name</label>
-            <input type="text" class="form-control" id="categoryName" name="name" placeholder="E.g: Electronics,clothes,shoes..." required>
+<div class="w-100 py-4">
+    <div class="card shadow-sm border-0">
+        <div class="card-header bg-white py-3">
+            <h1 class="h4 card-title mb-0 fw-bold">Create Category</h1>
         </div>
+        <div class="card-body p-4">
+            <form method="POST" action="{{url_for('create_category')}}">
+                <div class="mb-3">
+                    <label class="form-label fw-medium">Category Name</label>
+                    <input type="text" class="form-control" name="name" placeholder="e.g. Electronics, clothes, shoes,...">
+                </div>
 
-        <!-- Status -->
-        <div class="mb-3">
-            <label for="categoryStatus" class="form-label">Status</label>
-            <select class="form-select" id="categoryStatus" name="status">
-                <option value="">---Select Status---</option>
-                <option value="Active">Active</option>
-                <option value="Inactive">Inactive</option>
-            </select>
+                <div class="mb-4">
+                    <label class="form-label fw-medium">Status</label>
+                    <select class="form-select" name="status">
+                        <option value="">--Select Status--</option>
+                        <option value="active">Active</option>
+                        <option value="inactive">Inactive</option>
+                    </select>
+                </div>
+
+                <button type="submit" class="btn btn-primary px-4">Save</button>
+                <a href="{{url_for('index_category')}}" class="btn btn-danger px-4">Cancel</a>
+            </form>
         </div>
-        <!-- Submit Button -->
-        <button type="submit" class="btn btn-primary px-4">save</button>
-        <a href="" class="btn btn-secondary">Cancel</a>
-    </form>
+    </div>
 </div>
-
 {% endblock %}

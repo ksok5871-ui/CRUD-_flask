@@ -1,17 +1,18 @@
 import pymysql
 
-def connectdatabase():
+def connectDB():
     return pymysql.connect(
-        host= "localhost",
-        user= "root",
+        host = "localhost",
+        user = "root",
         password='',
-        port=3306,
-        database='inventory_flask_db'
+        port = 3306,
+        database='inventory_flask_db',
+        cursorclass=pymysql.cursors.DictCursor,
     )
 
-connection=connectdatabase()
+conn = connectDB()
 
-if connection:
-    print("Connection to database successfully!")
-
-
+if conn:
+    print("Connect to database successfully!")
+else:
+    print("Connect to database failed!")

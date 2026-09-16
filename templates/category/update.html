@@ -1,0 +1,33 @@
+{% extends 'layout/base.html' %}
+
+{% block title %}Update Category{% endblock %}
+
+{% block content %}
+<div class="w-100 py-4">
+    <div class="card shadow-sm border-0">
+        <div class="card-header bg-white py-3">
+            <h1 class="h4 card-title mb-0 fw-bold">Update Category</h1>
+        </div>
+        <div class="card-body p-4">
+            <form method="POST" action="{{url_for('update_category', id=category.id)}}">
+                <div class="mb-3">
+                    <label class="form-label fw-medium">Category Name</label>
+                    <input type="text" class="form-control" name="name" value="{{category.name}}">
+                </div>
+
+                <div class="mb-4">
+                    <label class="form-label fw-medium">Status</label>
+                    <select class="form-select" name="status" required>
+                        <option value="">--Select Status--</option>
+                        <option value="active" {% if category.status == 'active' %}selected{% endif %}>Active</option>
+                        <option value="inactive" {% if category.status == 'inactive' %}selected{% endif %}>Inactive</option>
+                    </select>
+                </div>
+
+                <button type="submit" class="btn btn-primary px-4">Save</button>
+                <a href="{{url_for('index_category')}}" class="btn btn-danger px-4">Cancel</a>
+            </form>
+        </div>
+    </div>
+</div>
+{% endblock %}
