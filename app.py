@@ -27,7 +27,7 @@ def create_category():
         cursor.execute("INSERT INTO category(name,status) VALUES(%s, %s)", (name, status))
         db.commit()
         cursor.close()
-        return redirect(url_for('index_category')) 
+        return redirect(url_for('index_category'))
     return render_template('category/create.html')
 
 
@@ -53,10 +53,22 @@ def update_category(id):
 
     return render_template('category/update.html', category=category)
 
+@app.route('/category/delete/<int:id>', methods=['POST'])
+def delete_category(id):
+    cursor=conn.cursor()
+    cursor.execute("DELETE FROM category WHERE id=%s", (id,))
+    conn.commit()
+    cursor.close()
+    return redirect(url_for('index_category'))
+
+
 @app.route('/product')
 def index_product():
     return render_template('products/index.html')
 
+@app.route('/product/create', methods=['GET', 'POST'])
+def create_product():
+    return render_template('products/create.html')
 
 if __name__ == "__main__":
     app.run(debug=True)
