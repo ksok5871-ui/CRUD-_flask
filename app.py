@@ -1,7 +1,13 @@
+import os
+
 from flask import Flask, render_template, request, redirect, url_for
 from connection import conn
+from werkzeug.utils import secure_filename
+import os
 
 app = Flask(__name__)
+app.config['UPLOAD_FOLDER'] = os.path.join('static', 'Uploads', 'Products')
+os.makedirs(app.config['UPLOAD_FOLDER'], exist_ok=True)
 
 @app.route('/')
 def dashboard():
@@ -64,10 +70,31 @@ def delete_category(id):
 
 @app.route('/product')
 def index_product():
-    return render_template('products/index.html')
+    cursor = conn.cursor()
+    cursor.execute("SELECT * FROM products")
+    products = cursor.fetchall()
+    cursor.close()
+    return render_template('products/index.html', products=products)
 
 @app.route('/product/create', methods=['GET', 'POST'])
 def create_product():
+    if request.method == "POST":
+        name = request.form['name']
+        price = request.form['price']
+        stock = request.form['stock']
+        image = request.files.get('image')
+        image_name = None
+        if image and image.filename and isinstance(image.filename, str):
+            image_name = secure_filename(image.filename)
+            image_path = os.path.join(app.config['UPLOAD_FOLDER'], image_name)
+            image.save(image_path)
+
+        cursor = conn.cursor()
+        sql = "INSERT INTO products(name, price, stock, image) VALUES(%s, %s, %s, %s)"
+        cursor.execute(sql, (name, price, stock, image_name))
+        conn.commit()
+        cursor.close()
+        return redirect(url_for('index_product'))
     return render_template('products/create.html')
 
 if __name__ == "__main__":
