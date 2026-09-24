@@ -97,5 +97,60 @@ def create_product():
         return redirect(url_for('index_product'))
     return render_template('products/create.html')
 
+@app.route('/product/update/<int:id>', methods=['GET', 'POST'])
+def update_product(id):
+    cursor = conn.cursor()
+    cursor.execute('SELECT * FROM products WHERE id=%s', (id,))
+    product = cursor.fetchone()
+
+    if product is None:
+        cursor.close()
+        return "Product not Found", 404
+
+    if request.method == "POST":
+        newName = request.form['name']
+        newPrice = request.form['price']
+        newStock = request.form['stock']
+        image_file = request.files.get('image')
+
+        old_image = product['image']
+        new_image = old_image  # Default to keeping the old image
+
+        # Check if user uploaded a new image
+        if image_file and image_file.filename != "":
+            filename = secure_filename(image_file.filename)
+            new_image_path = os.path.join(app.config['UPLOAD_FOLDER'], filename)
+
+            # Save new image
+            image_file.save(new_image_path)
+            new_image = filename
+
+            # Delete the old image from the folder if it exists
+            if old_image:
+                old_image_path = os.path.join(app.config['UPLOAD_FOLDER'], old_image)
+                if os.path.exists(old_image_path):
+                    os.remove(old_image_path)
+
+        # UPDATE query is now outside the file check so it always runs
+        cursor.execute("""
+            UPDATE products
+            SET name=%s, price=%s, stock=%s, image=%s
+            WHERE id=%s
+        """, (newName, newPrice, newStock, new_image, id))
+
+        conn.commit()
+        cursor.close()
+        return redirect(url_for('index_product'))
+
+    cursor.close()
+    return render_template('products/update.html', product=product)
+
+@app.route('/product/delete/<int:id>', methods=['POST'])
+def delete_product(id):
+    cursor = conn.cursor()
+    cursor.execute('DELETE FROM products WHERE id=%s', (id,))
+    conn.commit()
+    cursor.close()
+    return redirect(url_for('index_product'))
 if __name__ == "__main__":
     app.run(debug=True)
